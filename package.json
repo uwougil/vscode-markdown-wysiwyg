@@ -1,0 +1,108 @@
+{
+  "name": "markdown-wysiwyg-v1",
+  "displayName": "Markdown WYSIWYG V1",
+  "description": "Typora-style Markdown WYSIWYG editor prototype for VS Code (typewriter mode, zoom, outline, image paste, content width).",
+  "version": "0.1.0",
+  "publisher": "local",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.131.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCustomEditor:mdwysiwyg.markdownEditor"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "customEditors": [
+      {
+        "viewType": "mdwysiwyg.markdownEditor",
+        "displayName": "Markdown WYSIWYG V1",
+        "priority": "option",
+        "selector": [
+          {
+            "filenamePattern": "*.md"
+          }
+        ]
+      }
+    ],
+    "commands": [
+      {
+        "command": "mdwysiwyg.zoomIn",
+        "title": "Markdown WYSIWYG: Zoom In",
+        "category": "Markdown WYSIWYG"
+      },
+      {
+        "command": "mdwysiwyg.zoomOut",
+        "title": "Markdown WYSIWYG: Zoom Out",
+        "category": "Markdown WYSIWYG"
+      },
+      {
+        "command": "mdwysiwyg.zoomReset",
+        "title": "Markdown WYSIWYG: Reset Zoom",
+        "category": "Markdown WYSIWYG"
+      },
+      {
+        "command": "mdwysiwyg.toggleTypewriter",
+        "title": "Markdown WYSIWYG: Toggle Typewriter Mode",
+        "category": "Markdown WYSIWYG"
+      },
+      {
+        "command": "mdwysiwyg.toggleOutline",
+        "title": "Markdown WYSIWYG: Toggle Outline",
+        "category": "Markdown WYSIWYG"
+      },
+      {
+        "command": "mdwysiwyg.setWidth",
+        "title": "Markdown WYSIWYG: Set Content Width",
+        "category": "Markdown WYSIWYG"
+      }
+    ],
+    "configuration": {
+      "title": "Markdown WYSIWYG V1",
+      "properties": {
+        "mdwysiwyg.typewriter": {
+          "type": "boolean",
+          "default": false,
+          "description": "Keep the caret near the vertical center of the viewport while typing."
+        },
+        "mdwysiwyg.zoom": {
+          "type": "number",
+          "default": 100,
+          "minimum": 60,
+          "maximum": 200,
+          "description": "Content font scale in percent (60–200)."
+        },
+        "mdwysiwyg.contentWidth": {
+          "type": "string",
+          "enum": [
+            "narrow",
+            "normal",
+            "wide",
+            "full"
+          ],
+          "default": "normal",
+          "description": "Content area width preset."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "build": "node build.mjs",
+    "watch": "node build.mjs --watch",
+    "vscode:prepublish": "node build.mjs"
+  },
+  "dependencies": {
+    "@vscode/markdown-editor": "0.0.2-84",
+    "@vscode/observables": "^0.1.1-0",
+    "katex": "^0.16.33",
+    "mermaid": "^11.4.0"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.131.0",
+    "esbuild": "^0.24.0",
+    "typescript": "^5.6.0"
+  }
+}

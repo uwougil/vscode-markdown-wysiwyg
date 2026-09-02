@@ -1,0 +1,166 @@
+/*---------------------------------------------------------------------------------------------
+ *  Markdown WYSIWYG V1 — webview chrome styles
+ *
+ *  Layers on top of `@vscode/markdown-editor/editor.css` and
+ *  `@vscode/markdown-editor/themes/vscode-default.css`. Everything here adapts
+ *  to the current VS Code theme via the `--vscode-*` variables injected by the
+ *  webview host, so it works in light and dark themes alike.
+ *--------------------------------------------------------------------------------------------*/
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	width: 100%;
+	background: var(--vscode-editor-background);
+	overflow: hidden;
+}
+
+/* Outer wrapper: outline sidebar + editor scroll container in a flex row. */
+#root.mdw-editor {
+	display: flex;
+	flex-direction: row;
+	align-items: stretch;
+	height: 100%;
+	width: 100%;
+}
+
+/* ------------------------------------------------------------------ outline */
+
+.mdw-outline {
+	flex: 0 0 240px;
+	width: 240px;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+	background: var(--vscode-sideBar-background);
+	color: var(--vscode-sideBar-foreground);
+	border-right: 1px solid var(--vscode-panel-border, var(--vscode-sideBar-border, transparent));
+	font-size: var(--vscode-font-size, 13px);
+}
+
+.mdw-outline.mdw-outline-hidden {
+	display: none;
+}
+
+.mdw-outline-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 10px 12px 6px;
+	flex: 0 0 auto;
+}
+
+.mdw-outline-title {
+	font-size: 11px;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	color: var(--vscode-sideBarTitle-foreground, var(--vscode-sideBar-foreground));
+}
+
+.mdw-outline-collapse {
+	background: transparent;
+	border: none;
+	cursor: pointer;
+	color: var(--vscode-icon-foreground, var(--vscode-sideBar-foreground));
+	font-size: 12px;
+	line-height: 1;
+	padding: 3px 7px;
+	border-radius: 3px;
+}
+
+.mdw-outline-collapse:hover {
+	background: var(--vscode-toolbar-hoverBackground, rgba(0, 0, 0, 0.08));
+}
+
+.mdw-outline-filter {
+	flex: 0 0 auto;
+	margin: 0 12px 8px;
+	padding: 4px 8px;
+	border: 1px solid var(--vscode-input-border, transparent);
+	background: var(--vscode-input-background);
+	color: var(--vscode-input-foreground);
+	border-radius: 3px;
+	font-size: var(--vscode-font-size, 13px);
+	outline: none;
+}
+
+.mdw-outline-filter:focus {
+	border-color: var(--vscode-focusBorder);
+}
+
+.mdw-outline-list {
+	flex: 1 1 auto;
+	overflow-y: auto;
+	overflow-x: hidden;
+	padding: 2px 0 8px;
+}
+
+.mdw-outline-item {
+	display: block;
+	width: 100%;
+	text-align: left;
+	background: transparent;
+	border: none;
+	color: inherit;
+	cursor: pointer;
+	font-family: var(--vscode-font-family);
+	font-size: var(--vscode-font-size, 13px);
+	line-height: 1.7;
+	padding: 1px 12px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	user-select: none;
+}
+
+.mdw-outline-item:hover {
+	background: var(--vscode-list-hoverBackground, rgba(0, 0, 0, 0.06));
+	color: var(--vscode-list-hoverForeground, inherit);
+}
+
+.mdw-outline-item.mdw-outline-active {
+	background: var(--vscode-list-activeSelectionBackground, rgba(0, 0, 0, 0.1));
+	color: var(--vscode-list-activeSelectionForeground, inherit);
+}
+
+/* Indent by heading level. */
+.mdw-outline-level-1 { padding-left: 12px; font-weight: 600; }
+.mdw-outline-level-2 { padding-left: 22px; }
+.mdw-outline-level-3 { padding-left: 32px; }
+.mdw-outline-level-4 { padding-left: 42px; }
+.mdw-outline-level-5 { padding-left: 52px; }
+.mdw-outline-level-6 { padding-left: 62px; }
+
+/* ------------------------------------------------------------------ editor */
+
+.mdw-main {
+	flex: 1 1 auto;
+	min-width: 0;
+	height: 100%;
+	overflow: auto;
+	position: relative;
+	background: var(--vscode-editor-background);
+}
+
+/* The engine view fills the scroll container at minimum, and grows with content. */
+.mdw-main .md-editor {
+	min-height: 100%;
+}
+
+/* ------------------------------------------------------------------ mermaid */
+
+.md-mermaid {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 12px 0;
+}
+
+.md-mermaid svg {
+	max-width: 100%;
+	height: auto;
+}
