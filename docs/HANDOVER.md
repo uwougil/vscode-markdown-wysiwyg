@@ -4,6 +4,18 @@
 > 以及继续开发时最需要注意的边界，确保你能**顺利理解并在此基础上继续**。
 > 请先读一遍本文，再对照 [`REPORT.md`](REPORT.md)（设计与验证结论）和 `src/` 源码。
 
+## 0. 仓库位置与环境
+
+- **仓库（Git，含 `.git`）位于 WSL**：`/home/wugl/date/2026/9/2/markdown-wysiwyg-v1/`
+  （Windows 侧经 `\\wsl.localhost\Ubuntu\home\wugl\date\2026\9\2\markdown-wysiwyg-v1\` 访问）。
+- 分支 `main`，当前提交 `9353252`（工作树干净）。`node_modules`/`dist` 被 `.gitignore` 忽略、**不在仓库内**，首次需 `npm install` + `npm run build`。
+- **WSL 内 node/npm 不在默认 PATH**：用绝对路径或先 `export PATH="/home/wugl/.local/bin:$PATH"`（node v22.23.2 / npm 10.9.8）。
+- 已在 WSL 干净 clone 上全链路验证通过：`npm install` → `node test/run.mjs` **29/29** → `npx tsc --noEmit` 0 错误 → `npm run build`。
+- 开发环境注意：经外层 Git Bash 调 `wsl bash -lc` 时，`$PATH`/`$HOME` 会被外层提前展开成带空格的 Windows 路径导致语法错；宜把较长 WSL 命令写成 `.sh` 脚本再执行，别在命令行内嵌 `$` 变量。
+
+> ⚠️ Windows 工作区原有一份 `markdown-wysiwyg-v1`（实际开发目录，含 node_modules/dist），
+> 已于 2026-09-02 迁移后**删除**，一切以本 WSL 仓库为准，后续开发直接在 WSL 仓库内进行。
+
 ---
 
 ## 1. 一句话总结

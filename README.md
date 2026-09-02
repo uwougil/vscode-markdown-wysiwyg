@@ -63,7 +63,11 @@ markdown-wysiwyg-v1/
 
 ## 四、环境要求
 
-- **Node.js** ≥ 16（开发/构建；测试 `atob` 为全局，需 ≥16）
+- **仓库位置**：本项目 Git 仓库位于 WSL `/home/wugl/date/2026/9/2/markdown-wysiwyg-v1/`
+  （Windows 侧经 `\\wsl.localhost\Ubuntu\home\wugl\date\2026\9\2\markdown-wysiwyg-v1\` 访问）。
+  `node_modules`/`dist` 被 `.gitignore` 忽略，不在仓库内，首次需 `npm install` + `npm run build`。
+- **Node.js** ≥ 16（开发/构建；测试 `atob` 为全局，需 ≥16）。本机 WSL 实测 node v22.23.2 / npm 10.9.8。
+- **WSL 内 node/npm 不在默认 PATH**：用绝对路径，或先 `export PATH="/home/wugl/.local/bin:$PATH"`。
 - **npm**（随 Node 自带）
 - **VS Code** ≥ 1.131（`package.json` engines 声明 `^1.131.0`）
 - **TypeScript**、**esbuild** 作为 devDependencies
@@ -71,7 +75,8 @@ markdown-wysiwyg-v1/
 ## 五、安装与运行（Extension Development Host）
 
 ```bash
-cd markdown-wysiwyg-v1
+cd /home/wugl/date/2026/9/2/markdown-wysiwyg-v1
+export PATH="/home/wugl/.local/bin:$PATH"   # WSL: 把 node/npm 加入 PATH
 
 # 1) 安装依赖
 npm install
@@ -88,6 +93,9 @@ npx tsc --noEmit
 #    → 新窗口里新建/打开一个 .md 文件
 #    → 右键标签 →「打开方式…」→「Markdown WYSIWYG V1」
 ```
+
+> ⚠️ 开发环境提示：经 Git Bash / PowerShell 调 `wsl bash -lc "…"` 时，`$PATH`/`$HOME` 会被外层提前展开成带空格的 Windows 路径导致语法错。
+> 较长 WSL 命令建议写成 `.sh` 脚本再执行，别在命令行内嵌 `$` 变量。
 
 ## 六、测试与基准
 
