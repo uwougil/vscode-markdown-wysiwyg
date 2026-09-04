@@ -1,5 +1,7 @@
 # Markdown WYSIWYG V1
 
+> **GitHub**：<https://github.com/uwougil/vscode-markdown-wysiwyg>（远程 `origin`，主分支 `main`）
+
 在**本地官方 VS Code（1.131+）** 上，基于微软官方实验性「Hybrid Markdown 编辑器」的核心引擎
 [`@vscode/markdown-editor`](https://www.npmjs.com/package/@vscode/markdown-editor)，自写的一个
 **所见即所得（WYSIWYG）Markdown 编辑器** Custom Editor 扩展原型。共落地 **6 项增强功能** +

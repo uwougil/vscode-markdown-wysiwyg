@@ -8,6 +8,8 @@
 
 - **仓库（Git，含 `.git`）位于 WSL**：`/home/wugl/date/2026/9/2/markdown-wysiwyg-v1/`
   （Windows 侧经 `\\wsl.localhost\Ubuntu\home\wugl\date\2026\9\2\markdown-wysiwyg-v1\` 访问）。
+- **远程**：`origin = https://github.com/uwougil/vscode-markdown-wysiwyg`（公开仓库，主分支 `main`）。
+  WSL 已配置 `credential.helper=store`（凭据文件 `~/.git-credentials`，权限 600），可直接 `git push`。
 - 分支 `main`，当前提交 `9353252`（工作树干净）。`node_modules`/`dist` 被 `.gitignore` 忽略、**不在仓库内**，首次需 `npm install` + `npm run build`。
 - **WSL 内 node/npm 不在默认 PATH**：用绝对路径或先 `export PATH="/home/wugl/.local/bin:$PATH"`（node v22.23.2 / npm 10.9.8）。
 - 已在 WSL 干净 clone 上全链路验证通过：`npm install` → `node test/run.mjs` **29/29** → `npx tsc --noEmit` 0 错误 → `npm run build`。
