@@ -65,11 +65,10 @@ markdown-wysiwyg-v1/
 
 ## 四、环境要求
 
-- **仓库位置**：本项目 Git 仓库位于 WSL `/home/wugl/date/2026/9/2/markdown-wysiwyg-v1/`
-  （Windows 侧经 `\\wsl.localhost\Ubuntu\home\wugl\date\2026\9\2\markdown-wysiwyg-v1\` 访问）。
+- **仓库位置**：本项目 Git 仓库位于 WSL `/path/to/vscode-markdown-wysiwyg`。
   `node_modules`/`dist` 被 `.gitignore` 忽略，不在仓库内，首次需 `npm install` + `npm run build`。
 - **Node.js** ≥ 16（开发/构建；测试 `atob` 为全局，需 ≥16）。本机 WSL 实测 node v22.23.2 / npm 10.9.8。
-- **WSL 内 node/npm 不在默认 PATH**：用绝对路径，或先 `export PATH="/home/wugl/.local/bin:$PATH"`。
+- **WSL 内 node/npm 不在默认 PATH**：用绝对路径，或先 `export PATH="$HOME/.local/bin:$PATH"`。
 - **npm**（随 Node 自带）
 - **VS Code** ≥ 1.131（`package.json` engines 声明 `^1.131.0`）
 - **TypeScript**、**esbuild** 作为 devDependencies
@@ -77,8 +76,8 @@ markdown-wysiwyg-v1/
 ## 五、安装与运行（Extension Development Host）
 
 ```bash
-cd /home/wugl/date/2026/9/2/markdown-wysiwyg-v1
-export PATH="/home/wugl/.local/bin:$PATH"   # WSL: 把 node/npm 加入 PATH
+cd /path/to/vscode-markdown-wysiwyg
+export PATH="$HOME/.local/bin:$PATH"   # WSL: 把 node/npm 加入 PATH
 
 # 1) 安装依赖
 npm install
